@@ -27,9 +27,9 @@ final tmmrThemeData = ThemeData(
     headline2: TextStyle(
         fontSize: 28.0, fontWeight: FontWeight.bold, color: Colors.white),
     headline3: TextStyle(
-        fontSize: 24.0, fontWeight: FontWeight.bold, color: Colors.white),
+        fontSize: 24.0, fontWeight: FontWeight.normal, color: Colors.white),
     headline4: TextStyle(
-        fontSize: 18.0, fontWeight: FontWeight.bold, color: Colors.white),
+        fontSize: 18.0, fontWeight: FontWeight.normal, color: Colors.white),
     headline5: TextStyle(
         fontSize: 14.0, fontStyle: FontStyle.normal, color: Colors.white),
     headline6: TextStyle(
