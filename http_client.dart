@@ -36,6 +36,8 @@ class HttpClient {
         contentType: 'application/json; charset=utf8',
         responseType: ResponseType.json);
 
+    options.headers["Accept"] = "application/json; charset=utf8";
+
     var dio = Dio(options);
     if (addAuthInterceptor) {
       dio.interceptors.add(AuthenticationInterceptor());
