@@ -19,14 +19,15 @@ class TokenRepository {
   String? _token;
   DateTime? _expiresAt;
 
-  static Future init() async {
-    if (_instance != null) return;
+  static Future<bool> init() async {
+    if (_instance != null) return true;
     _instance = TokenRepository._internal();
     var prefs = await SharedPreferences.getInstance();
     _instance?._token = prefs.getString(tokenKey);
     var expiresAtString = prefs.getString(tokenExpiresKey);
     _instance?._expiresAt =
         expiresAtString != null ? DateTime.parse(expiresAtString) : null;
+    return true;
   }
 
   String? getToken() {
@@ -48,5 +49,13 @@ class TokenRepository {
     _expiresAt = expiresAt;
     var prefs = await SharedPreferences.getInstance();
     await prefs.setString(tokenExpiresKey, expiresAtString);
+  }
+
+  Future logout() async {
+    var prefs = await SharedPreferences.getInstance();
+    await prefs.remove(tokenExpiresKey);
+    await prefs.remove(tokenKey);
+    _token = null;
+    _expiresAt = null;
   }
 }
