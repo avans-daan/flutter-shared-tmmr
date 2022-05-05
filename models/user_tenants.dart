@@ -42,15 +42,15 @@ class UserTenantsStateNotifier extends StateNotifier<UserTenants> {
     return tenants.when(
         loading: () => UserTenantsStateNotifier(UserTenants(
             tenants: List.empty(),
-            selectedTenant: Tenant(id: "unknown", name: "Loading"))),
+            selectedTenant: Tenant(id: "", name: "Loading"))),
         error: (err, stack) => UserTenantsStateNotifier(UserTenants(
             tenants: List.empty(),
-            selectedTenant: Tenant(id: "unknown", name: "Failed"))),
+            selectedTenant: Tenant(id: "", name: "Failed"))),
         data: (tenants) {
           if (tenants.isEmpty) {
             return UserTenantsStateNotifier(UserTenants(
                 tenants: List.empty(),
-                selectedTenant: Tenant(id: "unknown", name: "No Tenants")));
+                selectedTenant: Tenant(id: "", name: "No Tenants")));
           }
 
           // Auto select saved tenant or first from the list if none was set
