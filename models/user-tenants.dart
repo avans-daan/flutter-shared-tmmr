@@ -1,5 +1,7 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
+import 'package:mobile_tmmr/shared-tmmr/repositories/tenant_repository.dart';
+import 'package:shared_preferences/shared_preferences.dart';
 
 import '../api-resources/tenant.dart';
 import '../http_client.dart';
@@ -46,14 +48,32 @@ class UserTenantsStateNotifier extends StateNotifier<UserTenants> {
             tenants: List.empty(),
             selectedTenant: Tenant(id: "unknown", name: "Failed"))),
         data: (tenants) {
-          return UserTenantsStateNotifier(UserTenants(
-              tenants: tenants,
-              selectedTenant:
-                  tenants[0])); // TODO select tenant from stored preferences
+          if (tenants.isEmpty) {
+            return UserTenantsStateNotifier(UserTenants(
+                tenants: List.empty(),
+                selectedTenant: Tenant(id: "unknown", name: "No Tenants")));
+          }
+
+          // Auto select saved tenant or first from the list if none was set
+          var tenantId = TenantRepository().getTenantId();
+          var selectedTenant = tenants.firstWhere(
+              (element) => element.id == tenantId,
+              orElse: () => tenants[0]);
+
+          return UserTenantsStateNotifier(
+              UserTenants(tenants: tenants, selectedTenant: selectedTenant));
         });
   });
 
   Future setActiveTenant({required Tenant tenant}) async {
     state = state.copyWith(selectedTenant: tenant);
+    await TenantRepository().setTenantId(tenant.id);
   }
+}
+
+class UserSelectedTenantNotifier {
+  static final provider = Provider<Tenant>((ref) {
+    return ref.watch(UserTenantsStateNotifier.provider
+        .select((value) => value.selectedTenant));
+  });
 }
