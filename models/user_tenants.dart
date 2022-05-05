@@ -1,10 +1,9 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
-import 'package:mobile_tmmr/shared-tmmr/repositories/tenant_repository.dart';
-import 'package:shared_preferences/shared_preferences.dart';
 
 import '../api-resources/tenant.dart';
 import '../http_client.dart';
+import '../repositories/tenant_repository.dart';
 
 @immutable
 class UserTenants {
