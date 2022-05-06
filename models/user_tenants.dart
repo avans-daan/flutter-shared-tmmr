@@ -25,7 +25,7 @@ class UserTenants {
 class UsersTenantsNotifier {
   static final provider = FutureProvider<List<Tenant>>((ref) async {
     final response =
-        await HttpClient().getAuthorizedClient().get("/api/user/tenants");
+        await HttpClient().getAuthorizedClient().get('/api/user/tenants');
 
     final dataArray = response.data['data'] as List;
     return dataArray.map((e) => Tenant.fromJson(e)).toList();
@@ -42,15 +42,15 @@ class UserTenantsStateNotifier extends StateNotifier<UserTenants> {
     return tenants.when(
         loading: () => UserTenantsStateNotifier(UserTenants(
             tenants: List.empty(),
-            selectedTenant: Tenant(id: "", name: "Loading"))),
+            selectedTenant: Tenant(id: '', name: 'Loading'))),
         error: (err, stack) => UserTenantsStateNotifier(UserTenants(
             tenants: List.empty(),
-            selectedTenant: Tenant(id: "", name: "Failed"))),
+            selectedTenant: Tenant(id: '', name: 'Failed'))),
         data: (tenants) {
           if (tenants.isEmpty) {
             return UserTenantsStateNotifier(UserTenants(
                 tenants: List.empty(),
-                selectedTenant: Tenant(id: "", name: "No Tenants")));
+                selectedTenant: Tenant(id: '', name: 'No Tenants')));
           }
 
           // Auto select saved tenant or first from the list if none was set

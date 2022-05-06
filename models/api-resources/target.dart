@@ -6,6 +6,9 @@ class Target {
   Target({required this.id, required this.name, required this.targetId});
 
   static Target fromJson(dynamic content) {
-    return Target(id: content['id'], name: content['name'], targetId: content['target_id']);
+    return Target(
+        id: content['id'],
+        name: content['name'],
+        targetId: content['target_id']);
   }
 }

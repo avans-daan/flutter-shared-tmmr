@@ -15,7 +15,7 @@ class UserTimer {
     try {
       final response = await HttpClient()
           .getAuthorizedClient()
-          .get("/api/tenants/${selectedTenant.id}/timer");
+          .get('/api/tenants/${selectedTenant.id}/timer');
       return TimeEntry.fromJson(response.data['data']);
     } catch (err) {
       // TODO Error handling user story?

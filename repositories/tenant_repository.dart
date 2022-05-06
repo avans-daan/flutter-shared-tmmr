@@ -1,7 +1,7 @@
 import 'package:shared_preferences/shared_preferences.dart';
 
 class TenantRepository {
-  static const tenantKey = "CURRENT_TENANT_ID";
+  static const tenantKey = 'CURRENT_TENANT_ID';
 
   //region Singleton
   TenantRepository._internal();
@@ -9,7 +9,7 @@ class TenantRepository {
   static TenantRepository? _instance;
 
   factory TenantRepository() {
-    if (_instance == null) throw "Tenant repository not yet initialised";
+    if (_instance == null) throw 'Tenant repository not yet initialised';
     return _instance as TenantRepository;
   }
 

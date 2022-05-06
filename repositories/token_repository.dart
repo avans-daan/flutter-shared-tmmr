@@ -1,8 +1,8 @@
 import 'package:shared_preferences/shared_preferences.dart';
 
 class TokenRepository {
-  static const tokenKey = "AUTH_BEARER_TOKEN";
-  static const tokenExpiresKey = "AUTH_BEARER_EXPIRES_AT";
+  static const tokenKey = 'AUTH_BEARER_TOKEN';
+  static const tokenExpiresKey = 'AUTH_BEARER_EXPIRES_AT';
 
   //region Singleton
   TokenRepository._internal();
@@ -10,7 +10,7 @@ class TokenRepository {
   static TokenRepository? _instance;
 
   factory TokenRepository() {
-    if (_instance == null) throw "Token repository not yet initialised";
+    if (_instance == null) throw 'Token repository not yet initialised';
     return _instance as TokenRepository;
   }
 

@@ -14,13 +14,13 @@ class AuthenticationInterceptor extends Interceptor {
       return handler.reject(
           DioError(
               requestOptions: options,
-              error: "Unauthorized",
+              error: 'Unauthorized',
               response: null,
               type: DioErrorType.cancel),
           true);
     }
 
-    options.headers["Authorization"] = "Bearer $token";
+    options.headers['Authorization'] = 'Bearer $token';
 
     return super.onRequest(options, handler);
   }
