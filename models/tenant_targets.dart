@@ -15,6 +15,6 @@ class TenantTargets {
         .getAuthorizedClient()
         .get('/api/tenants/${selectedTenant.id}/targets');
     final dataArray = response.data['data'] as List;
-    return dataArray.map((e) => Target.fromJson(e)).toList();
+    return dataArray.map(Target.fromJson).toList();
   });
 }

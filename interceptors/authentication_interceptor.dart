@@ -5,7 +5,7 @@ class AuthenticationInterceptor extends Interceptor {
   AuthenticationInterceptor();
 
   @override
-  Future onRequest(
+  Future<void> onRequest(
       RequestOptions options, RequestInterceptorHandler handler) async {
     var repo = TokenRepository();
     var token = repo.getToken();

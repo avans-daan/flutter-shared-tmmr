@@ -1,21 +1,22 @@
 import 'package:shared_preferences/shared_preferences.dart';
 
 class TokenRepository {
-  static const tokenKey = 'AUTH_BEARER_TOKEN';
-  static const tokenExpiresKey = 'AUTH_BEARER_EXPIRES_AT';
-
   //region Singleton
+  factory TokenRepository() {
+    if (_instance == null) {
+      throw Exception('Token repository not yet initialised');
+    }
+    return _instance as TokenRepository;
+  }
+
   TokenRepository._internal();
 
   static TokenRepository? _instance;
 
-  factory TokenRepository() {
-    if (_instance == null) throw 'Token repository not yet initialised';
-    return _instance as TokenRepository;
-  }
-
   //endregion
 
+  static const tokenKey = 'AUTH_BEARER_TOKEN';
+  static const tokenExpiresKey = 'AUTH_BEARER_EXPIRES_AT';
   String? _token;
   DateTime? _expiresAt;
 
@@ -38,20 +39,20 @@ class TokenRepository {
     return _expiresAt;
   }
 
-  Future setToken(String token) async {
+  Future<void> setToken(String token) async {
     _token = token;
     var prefs = await SharedPreferences.getInstance();
     await prefs.setString(tokenKey, token);
   }
 
-  Future setExpiresAt(String expiresAtString) async {
+  Future<void> setExpiresAt(String expiresAtString) async {
     var expiresAt = DateTime.parse(expiresAtString);
     _expiresAt = expiresAt;
     var prefs = await SharedPreferences.getInstance();
     await prefs.setString(tokenExpiresKey, expiresAtString);
   }
 
-  Future logout() async {
+  Future<void> logout() async {
     var prefs = await SharedPreferences.getInstance();
     await prefs.remove(tokenExpiresKey);
     await prefs.remove(tokenKey);

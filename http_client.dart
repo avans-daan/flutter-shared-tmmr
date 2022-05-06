@@ -8,19 +8,19 @@ dynamic _parseAndDecode(String response) {
   return jsonDecode(response);
 }
 
-Future parseJson(String text) {
+Future<void> parseJson(String text) {
   return compute(_parseAndDecode, text);
 }
 
 class HttpClient {
   //region Singleton
-  HttpClient._internal();
-
-  static final _instance = HttpClient._internal();
-
   factory HttpClient() {
     return _instance;
   }
+
+  HttpClient._internal();
+
+  static final _instance = HttpClient._internal();
 
   //endregion
 

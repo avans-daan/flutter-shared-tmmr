@@ -1,9 +1,9 @@
 class Target {
+  Target({required this.id, required this.name, required this.targetId});
+
   final String id;
   final String name;
   final String? targetId;
-
-  Target({required this.id, required this.name, required this.targetId});
 
   static Target fromJson(dynamic content) {
     return Target(

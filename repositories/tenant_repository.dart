@@ -1,20 +1,22 @@
 import 'package:shared_preferences/shared_preferences.dart';
 
 class TenantRepository {
-  static const tenantKey = 'CURRENT_TENANT_ID';
-
   //region Singleton
+
+  factory TenantRepository() {
+    if (_instance == null) {
+      throw Exception('Tenant repository not yet initialised');
+    }
+    return _instance as TenantRepository;
+  }
+
   TenantRepository._internal();
 
   static TenantRepository? _instance;
 
-  factory TenantRepository() {
-    if (_instance == null) throw 'Tenant repository not yet initialised';
-    return _instance as TenantRepository;
-  }
-
   //endregion
 
+  static const tenantKey = 'CURRENT_TENANT_ID';
   String? _tenantId;
 
   static Future<bool> init() async {
@@ -29,7 +31,7 @@ class TenantRepository {
     return _tenantId;
   }
 
-  Future setTenantId(String tenantId) async {
+  Future<void> setTenantId(String tenantId) async {
     _tenantId = tenantId;
     var prefs = await SharedPreferences.getInstance();
     await prefs.setString(tenantKey, tenantId);

@@ -7,10 +7,10 @@ import '../repositories/tenant_repository.dart';
 
 @immutable
 class UserTenants {
+  const UserTenants({required this.tenants, required this.selectedTenant});
+
   final List<Tenant> tenants;
   final Tenant selectedTenant;
-
-  const UserTenants({required this.tenants, required this.selectedTenant});
 
   UserTenants copyWith({
     List<Tenant>? tenants,
@@ -28,7 +28,7 @@ class UsersTenantsNotifier {
         await HttpClient().getAuthorizedClient().get('/api/user/tenants');
 
     final dataArray = response.data['data'] as List;
-    return dataArray.map((e) => Tenant.fromJson(e)).toList();
+    return dataArray.map(Tenant.fromJson).toList();
   });
 }
 
@@ -64,7 +64,7 @@ class UserTenantsStateNotifier extends StateNotifier<UserTenants> {
         });
   });
 
-  Future setActiveTenant({required Tenant tenant}) async {
+  Future<void> setActiveTenant({required Tenant tenant}) async {
     state = state.copyWith(selectedTenant: tenant);
     await TenantRepository().setTenantId(tenant.id);
   }

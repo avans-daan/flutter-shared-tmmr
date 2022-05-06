@@ -1,16 +1,16 @@
 class TimeEntry {
-  final String id;
-  final String? description;
-  final DateTime start;
-  final DateTime? stop;
-  final String? targetId;
-
   TimeEntry(
       {required this.id,
       required this.description,
       required this.start,
       required this.stop,
       required this.targetId});
+
+  final String id;
+  final String? description;
+  final DateTime start;
+  final DateTime? stop;
+  final String? targetId;
 
   static TimeEntry fromJson(dynamic content) {
     return TimeEntry(
