@@ -1,6 +1,6 @@
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 
-import '../api-resources/time_entry.dart';
+import './api-resources/time_entry.dart';
 import '../http_client.dart';
 import 'user_tenants.dart';
 

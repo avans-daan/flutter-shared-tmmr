@@ -1,7 +1,7 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 
-import '../api-resources/tenant.dart';
+import './api-resources/tenant.dart';
 import '../http_client.dart';
 import '../repositories/tenant_repository.dart';
 
