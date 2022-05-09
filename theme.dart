@@ -9,6 +9,8 @@ final colorScheme = ColorScheme.fromSeed(
   primary: const Color(0xFF114AB8),
   onPrimary: Colors.white,
   error: const Color(0xFFD01B1B),
+  surface: const Color(0xFF1C1B1F),
+  shadow: const Color.fromARGB(77, 0, 0, 0)
 );
 
 // TODO TMMR-59 determine the correct colours when building the shared widgets and layouts
