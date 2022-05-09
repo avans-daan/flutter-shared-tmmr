@@ -5,7 +5,7 @@ class AuthenticationInterceptor extends Interceptor {
   AuthenticationInterceptor();
 
   @override
-  Future onRequest(
+  Future<void> onRequest(
       RequestOptions options, RequestInterceptorHandler handler) async {
     var repo = TokenRepository();
     var token = repo.getToken();
@@ -14,13 +14,13 @@ class AuthenticationInterceptor extends Interceptor {
       return handler.reject(
           DioError(
               requestOptions: options,
-              error: "Unauthorized",
+              error: 'Unauthorized',
               response: null,
               type: DioErrorType.cancel),
           true);
     }
 
-    options.headers["Authorization"] = "Bearer $token";
+    options.headers['Authorization'] = 'Bearer $token';
 
     return super.onRequest(options, handler);
   }
