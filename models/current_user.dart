@@ -47,6 +47,16 @@ class CurrentUser {
     );
   }
 
+  String getCurrentUsername() {
+    return user.when(
+        loading: () => 'Loading...',
+        error: (err, stack) => 'User not found',
+        data: (user) {
+          return user.name;
+        }
+    );
+  }
+
   bool getNotification() {
     return user.when(
         loading: () => false,
@@ -139,6 +149,20 @@ class CurrentUserStateNotifier extends StateNotifier<CurrentUser> {
 class CurrentUserThemeNotifier {
   static final provider = StateProvider<Themes>((ref) {
     var state = ref.watch(CurrentUserStateNotifier.provider.select((value) => value.getCurrentTheme()));
+    return state;
+  });
+}
+
+class CurrentUsernameNotifier {
+  static final provider = StateProvider<String>((ref) {
+    var state = ref.watch(CurrentUserStateNotifier.provider.select((value) => value.getCurrentUsername()));
+    return state;
+  });
+}
+
+class CurrentUserNotificationsNotifier {
+  static final provider = StateProvider<bool>((ref) {
+    var state = ref.watch(CurrentUserStateNotifier.provider.select((value) => value.getNotification()));
     return state;
   });
 }
