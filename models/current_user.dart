@@ -53,7 +53,7 @@ class CurrentUser {
         error: (err, stack) => false,
         data: (user) {
           if (user.settings != null && user.settings['notification'] != null) {
-            return true;
+            return user.settings['notification'];
           }
 
           return false;
