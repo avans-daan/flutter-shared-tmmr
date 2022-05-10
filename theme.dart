@@ -14,7 +14,7 @@ final darkColorScheme = ColorScheme.fromSeed(
 final lightColorScheme = ColorScheme.fromSeed(
   seedColor: const Color(0xFF114AB8),
   brightness: Brightness.light,
-  secondary: const Color(0xffa1a1a1),
+  secondary: const Color(0xffd7d7d7),
   onSecondary: const Color(0xff5e5e5e),
   background: const Color(0xFFFFFFFF),
   primary: const Color(0xFF114AB8),
@@ -33,20 +33,20 @@ final darkThemeSchema = ThemeData(
 
   // Define the default `TextTheme`. Use this to specify the default
   // text styling for headlines, titles, bodies of text, and more.
-  textTheme: const TextTheme(
-    headline1: TextStyle(
+  textTheme: TextTheme(
+    headline1: const TextStyle(
         fontSize: 80.0, fontWeight: FontWeight.bold, color: Colors.white),
     headline2: TextStyle(
-        fontSize: 28.0, fontWeight: FontWeight.bold, color: Colors.white),
-    headline3: TextStyle(
+        fontSize: 28.0, fontWeight: FontWeight.bold, color: darkColorScheme.onPrimary),
+    headline3: const TextStyle(
         fontSize: 24.0, fontWeight: FontWeight.normal, color: Colors.white),
-    headline4: TextStyle(
+    headline4: const TextStyle(
         fontSize: 18.0, fontWeight: FontWeight.normal, color: Colors.white),
-    headline5: TextStyle(
+    headline5: const TextStyle(
         fontSize: 14.0, fontStyle: FontStyle.normal, color: Colors.white),
-    headline6: TextStyle(
+    headline6: const TextStyle(
         fontSize: 10.0, fontStyle: FontStyle.normal, color: Colors.white),
-    bodyText2: TextStyle(fontSize: 13.0, color: Colors.white),
+    bodyText2: const TextStyle(fontSize: 13.0, color: Colors.white),
   ),
 
   elevatedButtonTheme: ElevatedButtonThemeData(
@@ -84,20 +84,20 @@ final lightThemeSchema = ThemeData(
 
   // Define the default `TextTheme`. Use this to specify the default
   // text styling for headlines, titles, bodies of text, and more.
-  textTheme: const TextTheme(
-    headline1: TextStyle(
+  textTheme: TextTheme(
+    headline1: const TextStyle(
         fontSize: 80.0, fontWeight: FontWeight.bold, color: Colors.black),
     headline2: TextStyle(
-        fontSize: 28.0, fontWeight: FontWeight.bold, color: Colors.black),
-    headline3: TextStyle(
+        fontSize: 28.0, fontWeight: FontWeight.bold, color: darkColorScheme.onPrimary),
+    headline3: const TextStyle(
         fontSize: 24.0, fontWeight: FontWeight.normal, color: Colors.black),
-    headline4: TextStyle(
+    headline4: const TextStyle(
         fontSize: 18.0, fontWeight: FontWeight.normal, color: Colors.black),
-    headline5: TextStyle(
+    headline5: const TextStyle(
         fontSize: 14.0, fontStyle: FontStyle.normal, color: Colors.black),
-    headline6: TextStyle(
+    headline6: const TextStyle(
         fontSize: 10.0, fontStyle: FontStyle.normal, color: Colors.black),
-    bodyText2: TextStyle(fontSize: 13.0, color: Colors.black),
+    bodyText2: const TextStyle(fontSize: 13.0, color: Colors.black),
   ),
 
   elevatedButtonTheme: ElevatedButtonThemeData(
