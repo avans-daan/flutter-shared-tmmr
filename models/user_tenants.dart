@@ -4,6 +4,7 @@ import 'package:flutter_riverpod/flutter_riverpod.dart';
 import './api-resources/tenant.dart';
 import '../http_client.dart';
 import '../repositories/tenant_repository.dart';
+import 'current_user.dart';
 
 @immutable
 class UserTenants {
@@ -24,6 +25,8 @@ class UserTenants {
 
 class UsersTenantsNotifier {
   static final provider = FutureProvider<List<Tenant>>((ref) async {
+    // Watch so when current user changes the tenant also updates
+    ref.watch(CurrentUserIdNotifier.provider);
     final response =
         await HttpClient().getAuthorizedClient().get('/api/user/tenants');
 

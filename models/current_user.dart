@@ -71,6 +71,16 @@ class CurrentUser {
     );
   }
 
+  String getCurrentUserId() {
+    return user.when(
+        loading: () => '',
+        error: (err, stack) => '',
+        data: (user) {
+          return user.id;
+        }
+    );
+  }
+
   CurrentUser copyWith({
     AsyncValue<User>? user,
   }) {
@@ -145,6 +155,12 @@ class CurrentUserStateNotifier extends StateNotifier<CurrentUser> {
   });
 }
 
+class CurrentUserIdNotifier {
+  static final provider = StateProvider<String>((ref) {
+    var state = ref.watch(CurrentUserStateNotifier.provider.select((value) => value.getCurrentUserId()));
+    return state;
+  });
+}
 
 class CurrentUserThemeNotifier {
   static final provider = StateProvider<Themes>((ref) {
