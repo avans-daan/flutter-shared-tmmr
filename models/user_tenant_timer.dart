@@ -7,7 +7,7 @@ import 'user_tenants.dart';
 class UserTenantTimer {
   static final provider = FutureProvider<TimeEntry?>((ref) async {
     var selectedTenant = ref.watch(UserSelectedTenantNotifier.provider);
-    if (selectedTenant.id.isEmpty) {
+    if (selectedTenant == null) {
       // When current tenant isn't know yet the id will be empty
       return null;
     }
