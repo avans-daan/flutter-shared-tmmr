@@ -1,6 +1,6 @@
 import 'target.dart';
 
-enum States { incomplete, complete, approved, synced }
+enum States { incomplete, complete, approved }
 
 class TimeEntry {
   TimeEntry(
