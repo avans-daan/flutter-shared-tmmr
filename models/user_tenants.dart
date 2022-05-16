@@ -4,13 +4,14 @@ import 'package:flutter_riverpod/flutter_riverpod.dart';
 import './api-resources/tenant.dart';
 import '../http_client.dart';
 import '../repositories/tenant_repository.dart';
+import 'current_user.dart';
 
 @immutable
 class UserTenants {
   const UserTenants({required this.tenants, required this.selectedTenant});
 
   final List<Tenant> tenants;
-  final Tenant selectedTenant;
+  final Tenant? selectedTenant;
 
   UserTenants copyWith({
     List<Tenant>? tenants,
@@ -24,6 +25,8 @@ class UserTenants {
 
 class UsersTenantsNotifier {
   static final provider = FutureProvider<List<Tenant>>((ref) async {
+    // Watch so when current user changes the tenant also updates
+    ref.watch(CurrentUserIdNotifier.provider);
     final response =
         await HttpClient().getAuthorizedClient().get('/api/user/tenants');
 
@@ -42,15 +45,15 @@ class UserTenantsStateNotifier extends StateNotifier<UserTenants> {
     return tenants.when(
         loading: () => UserTenantsStateNotifier(UserTenants(
             tenants: List.empty(),
-            selectedTenant: Tenant(id: '', name: 'Loading'))),
+            selectedTenant: null)),
         error: (err, stack) => UserTenantsStateNotifier(UserTenants(
             tenants: List.empty(),
-            selectedTenant: Tenant(id: '', name: 'Failed'))),
+            selectedTenant: null)),
         data: (tenants) {
           if (tenants.isEmpty) {
             return UserTenantsStateNotifier(UserTenants(
                 tenants: List.empty(),
-                selectedTenant: Tenant(id: '', name: 'No Tenants')));
+                selectedTenant: null));
           }
 
           // Auto select saved tenant or first from the list if none was set
@@ -71,7 +74,7 @@ class UserTenantsStateNotifier extends StateNotifier<UserTenants> {
 }
 
 class UserSelectedTenantNotifier {
-  static final provider = Provider<Tenant>((ref) {
+  static final provider = Provider<Tenant?>((ref) {
     return ref.watch(UserTenantsStateNotifier.provider
         .select((value) => value.selectedTenant));
   });
