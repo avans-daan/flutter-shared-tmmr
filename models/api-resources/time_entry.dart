@@ -33,6 +33,15 @@ class TimeEntry {
         state: States.values.byName(content['state']));
   }
 
+  //static const String dateTimeFormat = 'y-M-d H:m:s';
+  Map<String, dynamic> toJsonNewState(States newState) => {
+    'id': id,
+    'description': description,
+    'start': start.toIso8601String(),
+    'stop': stop?.toIso8601String(),
+    'state': newState.name
+  };
+
   TimeEntry copyWith(
       {String? id,
       String? description,
