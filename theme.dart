@@ -112,16 +112,16 @@ final lightThemeSchema = ThemeData(
       style: ButtonStyle(
           foregroundColor: MaterialStateProperty.all<Color>(Colors.white))),
 
-  inputDecorationTheme: const InputDecorationTheme(
+  inputDecorationTheme: InputDecorationTheme(
       filled: true,
-      fillColor: Color(0xff1A1E1E),
+      fillColor: lightColorScheme.secondary,
       hintStyle: TextStyle(
-        color: Colors.white,
+        color: lightColorScheme.onSecondary
       ),
-      border: OutlineInputBorder(
+      border: const OutlineInputBorder(
         borderSide: BorderSide.none,
         borderRadius: BorderRadius.all(Radius.circular(0)),
       ),
-      contentPadding: EdgeInsets.fromLTRB(20, 15, 20, 15),
+      contentPadding: const EdgeInsets.fromLTRB(20, 15, 20, 15),
       floatingLabelBehavior: FloatingLabelBehavior.never),
 );
