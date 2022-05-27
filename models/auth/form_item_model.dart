@@ -1,6 +1,6 @@
-class FormItem {
+class FormItem<T> {
   const FormItem(this.value, {this.error = ''});
 
-  final String value;
+  final T value;
   final String? error;
 }
