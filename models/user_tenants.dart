@@ -28,7 +28,7 @@ class UsersTenantsNotifier {
     // Watch so when current user changes the tenant also updates
     ref.watch(CurrentUserIdNotifier.provider);
     final response =
-        await HttpClient().getAuthorizedClient().get('/api/user/tenants');
+        await HttpClient().getAuthorizedClient().get('/api1/user/tenants');
 
     final dataArray = response.data['data'] as List;
     return dataArray.map(Tenant.fromJson).toList();
@@ -43,17 +43,14 @@ class UserTenantsStateNotifier extends StateNotifier<UserTenants> {
     AsyncValue<List<Tenant>> tenants = ref.watch(UsersTenantsNotifier.provider);
 
     return tenants.when(
-        loading: () => UserTenantsStateNotifier(UserTenants(
-            tenants: List.empty(),
-            selectedTenant: null)),
-        error: (err, stack) => UserTenantsStateNotifier(UserTenants(
-            tenants: List.empty(),
-            selectedTenant: null)),
+        loading: () => UserTenantsStateNotifier(
+            UserTenants(tenants: List.empty(), selectedTenant: null)),
+        error: (err, stack) => UserTenantsStateNotifier(
+            UserTenants(tenants: List.empty(), selectedTenant: null)),
         data: (tenants) {
           if (tenants.isEmpty) {
-            return UserTenantsStateNotifier(UserTenants(
-                tenants: List.empty(),
-                selectedTenant: null));
+            return UserTenantsStateNotifier(
+                UserTenants(tenants: List.empty(), selectedTenant: null));
           }
 
           // Auto select saved tenant or first from the list if none was set
