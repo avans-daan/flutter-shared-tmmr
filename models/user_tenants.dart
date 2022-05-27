@@ -43,17 +43,14 @@ class UserTenantsStateNotifier extends StateNotifier<UserTenants> {
     AsyncValue<List<Tenant>> tenants = ref.watch(UsersTenantsNotifier.provider);
 
     return tenants.when(
-        loading: () => UserTenantsStateNotifier(UserTenants(
-            tenants: List.empty(),
-            selectedTenant: null)),
-        error: (err, stack) => UserTenantsStateNotifier(UserTenants(
-            tenants: List.empty(),
-            selectedTenant: null)),
+        loading: () => UserTenantsStateNotifier(
+            UserTenants(tenants: List.empty(), selectedTenant: null)),
+        error: (err, stack) => UserTenantsStateNotifier(
+            UserTenants(tenants: List.empty(), selectedTenant: null)),
         data: (tenants) {
           if (tenants.isEmpty) {
-            return UserTenantsStateNotifier(UserTenants(
-                tenants: List.empty(),
-                selectedTenant: null));
+            return UserTenantsStateNotifier(
+                UserTenants(tenants: List.empty(), selectedTenant: null));
           }
 
           // Auto select saved tenant or first from the list if none was set
