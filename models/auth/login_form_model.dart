@@ -88,6 +88,6 @@ class LoginFormNotifier extends StateNotifier<LoginFormModel> {
 }
 
 final loginFormNotifier =
-    StateNotifierProvider<LoginFormNotifier, LoginFormModel>((ref) {
+    StateNotifierProvider.autoDispose<LoginFormNotifier, LoginFormModel>((ref) {
   return LoginFormNotifier();
 });
