@@ -113,7 +113,7 @@ class CurrentUserStateNotifier extends StateNotifier<CurrentUser> {
   Future<void> setCurrentTheme(Themes theme) async {
       var user = state.user.asData?.value;
       if (user == null) return;
-      var settings = user.settings;
+      var settings = user.settings ?? {};
 
       switch (theme) {
         case Themes.dark:
@@ -132,7 +132,7 @@ class CurrentUserStateNotifier extends StateNotifier<CurrentUser> {
   Future<void> setNotifications(bool notification) async {
     var user = state.user.asData?.value;
     if (user == null) return;
-    var settings = user.settings;
+    var settings = user.settings ?? {};
 
     settings['notification'] = notification;
 
