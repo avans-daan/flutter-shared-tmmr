@@ -16,18 +16,18 @@ class RegisterFormModel {
     this.isLoading = false,
   });
 
-  final FormItem email;
-  final FormItem name;
-  final FormItem password;
-  final FormItem passwordConfirm;
+  final FormItem<String> email;
+  final FormItem<String> name;
+  final FormItem<String> password;
+  final FormItem<String> passwordConfirm;
   final bool isPasswordVisible;
   final bool isLoading;
 
   RegisterFormModel copyWith(
-      {FormItem? email,
-      FormItem? name,
-      FormItem? password,
-      FormItem? passwordConfirm,
+      {FormItem<String>? email,
+      FormItem<String>? name,
+      FormItem<String>? password,
+      FormItem<String>? passwordConfirm,
       bool? isPasswordVisible,
       bool? isLoading}) {
     return RegisterFormModel(

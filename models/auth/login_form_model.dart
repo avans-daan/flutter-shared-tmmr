@@ -13,14 +13,14 @@ class LoginFormModel {
       this.isPasswordVisible = false,
       this.isLoading = false});
 
-  final FormItem email;
-  final FormItem password;
+  final FormItem<String> email;
+  final FormItem<String> password;
   final bool isPasswordVisible;
   final bool isLoading;
 
   LoginFormModel copyWith(
-      {FormItem? email,
-      FormItem? password,
+      {FormItem<String>? email,
+        FormItem<String>? password,
       bool? isPasswordVisible,
       bool? isLoading}) {
     return LoginFormModel(
