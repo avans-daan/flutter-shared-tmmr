@@ -28,7 +28,7 @@ class UsersTenantsNotifier {
     // Watch so when current user changes the tenant also updates
     ref.watch(CurrentUserIdNotifier.provider);
     final response =
-        await HttpClient().getAuthorizedClient().get('/api1/user/tenants');
+        await HttpClient().getAuthorizedClient().get('/api/user/tenants');
 
     final dataArray = response.data['data'] as List;
     return dataArray.map(Tenant.fromJson).toList();
