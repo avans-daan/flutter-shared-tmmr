@@ -113,6 +113,6 @@ class RegisterFormNotifier extends StateNotifier<RegisterFormModel> {
 }
 
 final registerFormNotifier =
-    StateNotifierProvider<RegisterFormNotifier, RegisterFormModel>((ref) {
+    StateNotifierProvider.autoDispose<RegisterFormNotifier, RegisterFormModel>((ref) {
   return RegisterFormNotifier();
 });
