@@ -1,11 +1,11 @@
 
 import 'package:flutter/material.dart';
-import 'package:tmmr_desktop/shared-tmmr/widgets/timer/target_dropdown.dart';
-import 'package:tmmr_desktop/shared-tmmr/widgets/timer/timer_buttons.dart';
-import 'package:tmmr_desktop/shared-tmmr/widgets/timer/timer_description_field.dart';
-import 'package:tmmr_desktop/shared-tmmr/widgets/timer/timer_label.dart';
 
 import '../../models/timer/timer.dart';
+import 'target_dropdown.dart';
+import 'timer_buttons.dart';
+import 'timer_description_field.dart';
+import 'timer_label.dart';
 
 class TimerEditRow extends StatelessWidget {
   const TimerEditRow({Key? key}) : super(key: key);

@@ -1,8 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
-import 'package:tmmr_desktop/shared-tmmr/widgets/timer/timer_buttons.dart';
 
 import '../../models/timer/timer.dart';
+import 'timer_buttons.dart';
 
 class TimerButtonPane extends ConsumerWidget {
   const TimerButtonPane({Key? key}) : super(key: key);
