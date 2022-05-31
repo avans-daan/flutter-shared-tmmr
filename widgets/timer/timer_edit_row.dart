@@ -24,7 +24,6 @@ class TimerEditRow extends StatelessWidget {
             child: TargetDropdown(provider: TimerTargetNotifier.provider, notifier: TimerStateNotifier.provider.notifier)
         ),
         const SizedBox(width: 10),
-        // const TimerDescriptionField(),
         TimerLabel(
           style: Theme.of(context).textTheme.headlineMedium,
         ),
