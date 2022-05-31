@@ -14,7 +14,6 @@ class HoursOverviewHTTP {
       }
       return false;
     } catch (error) {
-      print(error.toString());
       return false;
     }
   }
