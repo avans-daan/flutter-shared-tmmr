@@ -4,7 +4,9 @@ import 'package:flutter_riverpod/flutter_riverpod.dart';
 import '../../../shared-tmmr/models/timer/timer.dart';
 
 class TimerDescriptionField extends ConsumerStatefulWidget {
-  const TimerDescriptionField({Key? key}) : super(key: key);
+  const TimerDescriptionField({Key? key, this.maxLines}) : super(key: key);
+
+  final int? maxLines;
 
   @override
   ConsumerState<ConsumerStatefulWidget> createState() =>
@@ -41,7 +43,7 @@ class _TimerDescriptionFieldState extends ConsumerState<TimerDescriptionField> {
               .read(TimerStateNotifier.provider.notifier)
               .setDescription(description: s);
         },
-        maxLines: 6,
+        maxLines: widget.maxLines ?? 6,
         controller: _textEditingController,
         keyboardType: TextInputType.multiline,
         validator: (value) {
